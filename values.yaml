@@ -1,0 +1,22 @@
+# Deploy a runner scale set for a specific repository or for a specific org
+githubConfigUrl: "https://github.com/deister-engineering"
+githubConfigSecret: github-app
+
+containerMode:
+  type: dind
+
+# Workflows can target this scale set with runs-on: arc-runner-set
+runnerScaleSetName: "arc-runner-set"
+
+template:
+  spec:
+    imagePullSecrets:
+      - name: ghcr-pull
+    containers:
+      - name: runner
+        image: ghcr.io/deister-engineering/arc-runner:latest
+        command: ["/home/runner/run.sh"]
+
+# Keep two idle runners ready for jobs
+minRunners: 2
+maxRunners: 20

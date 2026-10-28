@@ -1,0 +1,8 @@
+#kubectl apply -f namespace.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: arc-runners
+  labels:
+    app.kubernetes.io/name: actions-runner-controller
+    app.kubernetes.io/component: runners
