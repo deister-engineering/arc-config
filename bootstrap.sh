@@ -11,7 +11,7 @@ OCI=oci://ghcr.io/actions/actions-runner-controller-charts
 helm upgrade --install arc "$OCI/gha-runner-scale-set-controller" \
   --version "$CHART_VERSION" -n arc-systems --create-namespace --wait
 
-kubectl create namespace arc-runners --dry-run=client -o yaml | kubectl apply -f -
+kubectl apply -f namespace.yaml
 
 kubectl create secret generic github-app -n arc-runners \
   --from-literal=github_app_id="$APP_ID" \
