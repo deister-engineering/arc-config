@@ -58,10 +58,7 @@ Optionally, but highly recommended: Set `CHART_VERSION` in the command above to 
 Any time an update is made to the image, run these commands to push it:
 ```bash
 cd runner-docker
-docker buildx build --platform linux/amd64 -t ghcr.io/deister-engineering/arc-runner:<NEW_VERSION_HERE> --push .
-docker buildx build --platform linux/arm64 -t ghcr.io/deister-engineering/arc-runner:<NEW_VERSION_HERE> --push .
-docker buildx build --platform linux/amd64 -t ghcr.io/deister-engineering/arc-runner:latest --push .
-docker buildx build --platform linux/arm64 -t ghcr.io/deister-engineering/arc-runner:latest --push .
+docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/deister-engineering/arc-runner:<NEW_VERSION_HERE> -t ghcr.io/deister-engineering/arc-runner:latest --push .
 ```
 
 To verify functionality of the new image, run this command to pull it:
